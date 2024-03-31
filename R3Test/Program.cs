@@ -6,7 +6,19 @@ using R3;
 
 //Sample1();
 //Sample2();
-ReplaySubjectWindowExample();
+//ReplaySubjectWindowExample();
+OnErrorAndOnCompleted();
+
+void OnErrorAndOnCompleted()
+{
+    var subject = new Subject<int>();
+    subject.Do(
+        onNext: (v) => Console.WriteLine(v),
+        onCompleted: (v) => Console.WriteLine($"Completed {v}")
+        ).Subscribe();
+    subject.OnCompleted();
+    subject.OnNext(2);
+}
 
 void Sample1()
 {
